@@ -1,0 +1,7 @@
+{
+  "name": "VGear",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
