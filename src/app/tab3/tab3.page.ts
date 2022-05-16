@@ -6,7 +6,41 @@ import { Component } from '@angular/core';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
+  resources;
 
   constructor() {}
+
+  ionViewWillEnter() {
+    this.resources = [
+      {
+        name: 'Classes',
+        data: []      
+      },
+      {
+        name: 'Raças',
+        data: []      
+      },
+      {
+        name: 'Facções',
+        data: []      
+      },
+      {
+        name: 'NPCs',
+        data: []      
+      },
+      {
+        name: 'Criaturas',
+        data: []      
+      },
+      {
+        name: 'Itens',
+        data: []      
+      },
+    ];
+  }
+
+  search(event) {
+    console.log(event.detail.value)
+  }
 
 }

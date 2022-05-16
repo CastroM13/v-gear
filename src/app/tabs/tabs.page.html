@@ -1,20 +1,34 @@
-<ion-tabs>
+<ion-tabs [class]="!mobile ? 'wrapper' : null">
+  <ion-header *ngIf="mobile" [translucent]="true">
+    <ion-toolbar>
+      <ion-title>
+        Tab 1
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
 
-  <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="tab1">
-      <ion-icon name="triangle"></ion-icon>
-      <ion-label>Tab 1</ion-label>
-    </ion-tab-button>
-
-    <ion-tab-button tab="tab2">
-      <ion-icon name="ellipse"></ion-icon>
-      <ion-label>Tab 2</ion-label>
-    </ion-tab-button>
-
-    <ion-tab-button tab="tab3">
-      <ion-icon name="square"></ion-icon>
-      <ion-label>Tab 3</ion-label>
+  <ion-tab-bar *ngIf="mobile" slot="bottom">
+    <ion-tab-button *ngFor="let i of routes" [tab]="i.tab">
+      <ion-icon [name]="i.icon"></ion-icon>
+      <ion-label>{{i.title}}</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
+  
+  <div *ngIf="!mobile" class="side-menu">
+    <ion-item>
+      <ion-title>
+        Menu
+      </ion-title>
+    </ion-item>
+    <ion-item *ngFor="let i of routes" [routerLink]="['/tabs/'+i.tab]">
+      <ion-icon slot="start" [name]="i.icon"></ion-icon>
+      <ion-label>{{i.title}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Tema</ion-label>
+      <ion-icon slot="start" [name]="darkTheme ? 'moon' : 'sunny'"></ion-icon>
+      <ion-toggle [(ngModel)]="darkTheme"></ion-toggle>
+    </ion-item>
+  </div>
 
 </ion-tabs>

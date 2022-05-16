@@ -1,17 +1,9 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+<ion-content class="ion-padding">
+  <ion-searchbar debounce="500" (ionChange)="search($event)" placeholder="Buscar recurso" animated showCancelButton="focus"></ion-searchbar>
+  <ion-card *ngFor="let resource of resources">
+    <ion-card-header>
+      <ion-card-subtitle>{{resource.data.length}} {{resource.data.length > 1 ? 'disponíveis': 'disponível'}}</ion-card-subtitle>
+      <ion-card-title>{{resource.name}}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
 </ion-content>
